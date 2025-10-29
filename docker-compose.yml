@@ -1,0 +1,18 @@
+services:
+  traefik-merge:
+    build:
+      context: ./src
+    container_name: traefik-merge
+    restart: unless-stopped
+    networks:
+      - pangolin
+    environment:
+      # Comma-separated endpoints: first is primary (read-only, preferred on merge conflicts), second is secondary (read-write)
+      MERGE_ENDPOINTS: >
+        http://pangolin:3001/api/v1/traefik-config,
+        http://middleware-manager:80/traefik-config
+      MERGE_LISTEN: ":9000"
+
+networks:
+  pangolin:
+    external: true
