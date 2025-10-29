@@ -144,14 +144,7 @@ docker build -t traefik-http-merge .
 docker run -p 9000:9000 traefik-http-merge
 ```
 
-## CI/CD with GitHub Actions
 
-This repo includes a workflow (`.github/workflows/publish.yml`) that:
-- Triggers on pushes to `main` or tags (`v*`).
-- Builds and pushes multi-platform images to Docker Hub (`hhftechnology/traefik-http-merge`) and GitHub Container Registry (`ghcr.io/hhftechnology/traefik-http-merge`).
-- Tags: `latest`, branch names, semver (e.g., `v1.0.0`, `1.0`).
-
-Secrets required: `DOCKERHUB_USERNAME`, `DOCKERHUB_TOKEN`.
 
 ## Contributing
 
